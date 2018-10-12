@@ -3,6 +3,7 @@ package com.contractoback.service;
 import com.contractoback.entity.DictionaryTerm;
 import com.contractoback.entity.DocumentFragment;
 import com.contractoback.entity.DocumentParagraph;
+import com.contractoback.entity.DocumentTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +46,25 @@ public class DocumentService {
             }
             p.setTerms(terms);
         }
+        return fragment;
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/template")
+    public DocumentTemplate getTemplate(@RequestParam String name) throws IOException {
+        LOG.info("Requesting template:" + name);
+        ObjectMapper objectMapper = new ObjectMapper();
+        DocumentTemplate fragment = objectMapper.readValue(
+                new File("src/main/resources/" + name + "_template.json"),
+                DocumentTemplate.class);
+
+//        for (DocumentParagraph p : fragment.getParagraphs()) {
+//            List<DictionaryTerm> terms = new ArrayList<>();
+//            for (String sentence : p.getSentences()) {
+//                terms.addAll(dictionaryService.getTerms(getTermNames(sentence)));
+//            }
+//            p.setTerms(terms);
+//        }
         return fragment;
     }
 

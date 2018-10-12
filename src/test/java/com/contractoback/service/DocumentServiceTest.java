@@ -1,6 +1,7 @@
 package com.contractoback.service;
 
 import com.contractoback.entity.DocumentFragment;
+import com.contractoback.entity.DocumentTemplate;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,5 +39,10 @@ public class DocumentServiceTest {
         assertEquals(asList("bbb", "ddd"), service.getTermNames("aaa [bbb] ccc [ddd]"));
     }
 
-
+    @Test
+    public void testLoadTemplate() throws IOException {
+        DocumentTemplate result = service.getTemplate("contract");
+        assertEquals("contract", result.getName());
+        assertEquals(3, result.getFragmentNames().size());
+    }
 }

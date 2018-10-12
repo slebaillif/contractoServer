@@ -1,0 +1,13 @@
+{
+  "title":"Introduction",
+  "paragraphs":[
+    {"paragraph":"This contract represent the agreement between [Entity1] and [Entity2].",
+      "sentences":[
+        "This contract represent the agreement between ",
+        "[Entity1]",
+        " and ",
+        "[Entity2]",
+        "."
+      ]}
+  ]
+}
