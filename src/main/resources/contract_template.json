@@ -1,4 +1,4 @@
 {
   "name":"contract",
-  "fragmentNames":["header","introduction", "settlement"]
+  "fragmentNames":["header_paragraph","introduction_paragraph", "settlement_paragraph"]
 }

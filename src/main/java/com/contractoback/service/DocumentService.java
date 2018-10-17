@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,25 @@ public class DocumentService {
     public DocumentService() {
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping("/templateList")
+    public String[] getTemplateList(){
+        LOG.info("Requesting template list" );
+        File dir = new File("src/main/resources/");
+        File[] matchingFiles = dir.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.contains("template") && name.endsWith("json");
+            }
+        });
+
+        String[] templates = new String[matchingFiles.length];
+        int i=0;
+        for(File f: matchingFiles){
+            templates[i] = f.getName().split("_",-1)[0];
+            i++;
+        }
+        return templates;
+    }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/fragment")
     public DocumentFragment getFragment(@RequestParam String name) throws IOException {

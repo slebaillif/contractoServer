@@ -5,5 +5,13 @@
 
   {"name":"grace period",
     "description":"The number of days after the event before the clause takes effect.",
-    "values":["0", "1", "2", "3"]}
+    "values":["0", "1", "2", "3"]},
+
+  {"name":"Entity1",
+    "description":"The first entity in the contract.",
+    "values":["Apple Corp.", "Microsoft","ZOnga"]},
+
+  {"name":"Entity2",
+    "description":"The second entity in the contract.",
+    "values":["Apple Corp.", "Microsoft","ZOnga"]}
 ]

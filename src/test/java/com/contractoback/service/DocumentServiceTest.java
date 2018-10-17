@@ -45,4 +45,10 @@ public class DocumentServiceTest {
         assertEquals("contract", result.getName());
         assertEquals(3, result.getFragmentNames().size());
     }
+
+    @Test
+    public void testGetTemplateList() {
+        String[] r = service.getTemplateList();
+        assertEquals(new String[]{"contract"}, r);
+    }
 }
