@@ -78,13 +78,6 @@ public class DocumentService {
                 new File("src/main/resources/" + name + "_template.json"),
                 DocumentTemplate.class);
 
-//        for (DocumentParagraph p : fragment.getParagraphs()) {
-//            List<DictionaryTerm> terms = new ArrayList<>();
-//            for (String sentence : p.getSentences()) {
-//                terms.addAll(dictionaryService.getTerms(getTermNames(sentence)));
-//            }
-//            p.setTerms(terms);
-//        }
         return fragment;
     }
 

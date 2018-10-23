@@ -1,6 +1,6 @@
 [
     {"name":"settlement period",
-     "description":"The number of days allowed for settlement from the event. T marks the day of the even.",
+     "description":"The number of days allowed for settlement from the event. T marks the day of the event.",
     "values":["T", "T+1", "T+2"]},
 
   {"name":"grace period",
