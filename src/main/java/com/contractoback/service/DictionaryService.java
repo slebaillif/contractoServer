@@ -3,10 +3,7 @@ package com.contractoback.service;
 import com.contractoback.entity.DictionaryTerm;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +46,12 @@ public class DictionaryService {
             LOG.info("Found - Request for term:" + term);
             return Optional.of(t);
         }
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/addterm", method = RequestMethod.POST)
+    public String createTerm(@RequestBody DictionaryTerm term){
+        LOG.info("creating:"+term.toString());
+        return "ok";
     }
 
     public List<DictionaryTerm> getTerms(List<String> termNames) {
