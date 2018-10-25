@@ -1,6 +1,7 @@
 package com.contractoback.service;
 
 import com.contractoback.entity.DictionaryTerm;
+import com.contractoback.persistence.mongo.MongoDictionaryDao;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,11 @@ import java.util.logging.Logger;
 public class DictionaryService {
     private static Logger LOG = Logger.getLogger(DictionaryService.class.getName());
     Map<String, DictionaryTerm> dictionary = new HashMap<>();
+    MongoDictionaryDao dao;
 
     public DictionaryService() throws IOException {
         readDictionaryFile();
+        dao = new MongoDictionaryDao();
     }
 
     public DictionaryService(Map<String, DictionaryTerm> dictionary) {
@@ -51,6 +54,7 @@ public class DictionaryService {
     @RequestMapping(value = "/addterm", method = RequestMethod.POST)
     public String createTerm(@RequestBody DictionaryTerm term){
         LOG.info("creating:"+term.toString());
+        dao.saveTerm(term);
         return "ok";
     }
 
