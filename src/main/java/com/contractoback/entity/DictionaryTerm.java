@@ -1,8 +1,11 @@
 package com.contractoback.entity;
 
+import org.bson.types.ObjectId;
+
 import java.util.List;
 
 public class DictionaryTerm {
+    private ObjectId id;
     private String name;
     private String description;
     private List<String> values;
@@ -32,5 +35,13 @@ public class DictionaryTerm {
 
     public void setValues(List<String> values) {
         this.values = values;
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 }
